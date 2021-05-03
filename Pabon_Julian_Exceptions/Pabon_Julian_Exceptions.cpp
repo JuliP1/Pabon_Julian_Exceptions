@@ -19,7 +19,7 @@ int main()
 	cout << "Enter amount of offset: ";
 	cin >> offset;
 	//call function and output it
-	character(start, offset);
+	cout << character(start, offset);
 }
 
 char character(char start, int offset)
@@ -27,7 +27,7 @@ char character(char start, int offset)
 	//test if start is letter
 	try 
 	{
-		if (start < 'A' || start < 'z')
+		if (!isalpha(start))
 		{
 			throw start;
 		}
@@ -39,7 +39,7 @@ char character(char start, int offset)
 	//try if start + offset is a letter
 	try
 	{
-		if ((start + offset) < 'A' || (start + offset) < 'z')
+		if (!isalpha(start + offset))
 		{
 			throw (start + offset);
 		}
@@ -48,5 +48,6 @@ char character(char start, int offset)
 	{
 		cout << "invalidRangeException: " << offsetException << " is not a letter\n";
 	}
+	return(start + offset);
 }
 
